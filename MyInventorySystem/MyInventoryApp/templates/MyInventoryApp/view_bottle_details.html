@@ -1,0 +1,29 @@
+{% extends "MyInventoryApp/base.html" %}
+
+{% block content %}
+
+<h2>Water Bottle Details</h2>
+
+<p><strong>SKU:</strong> {{ bottle.sku }}</p>
+<p><strong>Brand:</strong> {{ bottle.brand }}</p>
+<p><strong>Mouth Size:</strong> {{ bottle.mouth_size }}</p>
+<p><strong>Size:</strong> {{ bottle.size }}</p>
+<p><strong>Color:</strong> {{ bottle.color }}</p>
+<p><strong>Supplier:</strong> {{ bottle.supplied_by.name }}</p>
+<p><strong>Cost:</strong> {{ bottle.cost }}</p>
+<p><strong>Quantity:</strong> {{ bottle.current_quantity }}</p>
+
+<br>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+
+<br>
+
+<a href="{% url 'view_bottles' %}" class="btn btn-secondary">
+    Back
+</a>
+
+{% endblock %}

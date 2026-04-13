@@ -16,6 +16,11 @@
     <tbody>
     {% for supplier in suppliers %}
         <tr>
+            <td>
+                <a href="{% url 'view_bottles' supplier.pk %}">
+                    {{ supplier.name }}
+                </a>
+            </td>
             <td>{{ supplier.name }}</td>
             <td>{{ supplier.city }}</td>
             <td>{{ supplier.country }}</td>

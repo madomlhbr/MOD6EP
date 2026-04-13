@@ -4,6 +4,14 @@
 
 <h2>Supplier List</h2>
 
+<div class="mb-3">
+    <a href="{% url 'add_bottle' %}" class="btn btn-primary me-2">Add Water Bottles</a>
+    {% if account %}
+        <a href="{% url 'manage_account' pk=account.id %}" class="btn btn-secondary me-2">Manage Account</a>
+    {% endif %}
+    <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+</div>
+
 <table class="table table-striped">
     <thead>
         <tr>

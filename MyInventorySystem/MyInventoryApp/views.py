@@ -60,7 +60,7 @@ def signup_view(request):
 def view_supplier(request):
     suppliers = Supplier.objects.all()
     account = get_current_account(request)
-    return render(request, "MyInventoryApp/supplier_list.html", {"suppliers": suppliers, "account": account})
+    return render(request, "MyInventoryApp/view_supplier.html", {"suppliers": suppliers, "account": account})
 
 
 def view_bottles(request, pk):
@@ -177,7 +177,7 @@ def add_bottle(request):
             )
             return redirect('view_supplier')
 
-    return render(request, "MyInventoryApp/bottle_add.html", {
+    return render(request, "MyInventoryApp/add_bottle.html", {
         "suppliers": suppliers,
         "errors": errors,
         **form_data,

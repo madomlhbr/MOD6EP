@@ -67,8 +67,8 @@ def view_bottles(request, pk):
     if pk == -1:
         bottles = WaterBottle.objects.all()
     else:
-        bottles = WaterBottle.objects.filter(Supplier = pk)
-    return render(request, "MyInventoryApp/bottle_list.html", {"bottles": bottles})
+        bottles = WaterBottle.objects.filter(supplied_by = pk)
+    return render(request, "MyInventoryApp/view_bottles.html", {"bottles": bottles})
 
 
 def view_bottle_details(request, pk):
@@ -195,8 +195,11 @@ def delete_account(request, pk):
 
 
 def manage_account(request, pk):
+    message=""
     account = get_object_or_404(Account, pk=pk)
-    return render(request, "MyInventoryApp/manage_account.html", {"account": account})
+    if request.GET.get("created") == "true":
+        message = "Password changed successfully"
+    return render(request, "MyInventoryApp/manage_account.html", {"account": account, "message":message})
 
 
 def change_password(request, pk):
@@ -214,7 +217,7 @@ def change_password(request, pk):
         if current_password == account.password and new_password == confirm_password:
             account.password = new_password
             account.save()
-            return redirect('manage_account', pk=account.pk)
+            return redirect(f"{reverse('manage_account', args=[account.pk])}?created=true")
         else:
             message = "Password change failed"
 

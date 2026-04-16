@@ -21,13 +21,13 @@
                 {% if messages %} <!--Jaysha. (2020, June 3). How to use Django Messages Framework. Ordinary Coders. https://ordinarycoders.com/blog/article/django-messages-framework-->
                     {% for message in messages %}
                         {% if "error" in message.tags %}
-                            <p> {{message}}</p>
+                            <p style="color: red;"> {{message}}</p>
                         {% endif %}
                         {% if "success" in message.tags %}
-                            <p> {{message}}</p>
+                            <p style="color: green;"> {{message}}</p>
                         {% endif %}
                         {% if "info" in message.tags %}
-                            <p> {{message}}</p>
+                            <p style="color: blue;"> {{message}}</p>
                         {% endif %}
                     {% endfor %}
                 {% endif %}

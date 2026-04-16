@@ -21,7 +21,7 @@
                 {% if messages %}
                     {% for message in messages %}
                         {% if "error" in message.tags %}
-                            <p> {{message}}</p>
+                            <p style="color: red;"> {{message}}</p>
                         {% endif %}
                     {% endfor %}
                 {% endif %}
